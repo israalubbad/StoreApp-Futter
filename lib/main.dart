@@ -72,13 +72,6 @@ class MyApp extends StatelessWidget {
           },
         );
 
-        //   ChangeNotifierProvider<LanguageProvider>(
-        //   create: (context) => LanguageProvider(),
-        //
-        // builder:(BuildContext context , Widget? child){
-        // },
-        //
-        // );
 
       },
     );

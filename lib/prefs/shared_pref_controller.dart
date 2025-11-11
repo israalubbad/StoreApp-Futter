@@ -36,7 +36,7 @@ class SharedPrefController {
   // generac
   T? getValueFor<T>(String key){
     if(_sharedPreferences.containsKey(key)){
-      return _sharedPreferences.get(key) as T ; // هيا يلي مررتها
+      return _sharedPreferences.get(key) as T ;
     }
     return null;
   }

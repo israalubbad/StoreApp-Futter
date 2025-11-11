@@ -16,9 +16,6 @@ extension ContextHelper on BuildContext{
     '/mainAppView': (context) => const MainAppView(),
     '/register_screen': (context) => const  RegisterScreen(),
     '/products_screen': (context) => const ProductsScreen(),
-    //'/products_details_screen': (context) => const ProductsDetailsScreen(),
-  //  '/cart_screen': (context) => const CartScreen(),
-    // '/product_screen': (context) => const ProductScreen(),
 
   };
 
