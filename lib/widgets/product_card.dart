@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:store_app/models/product.dart';
@@ -38,7 +39,7 @@ class _ProductCardState extends State<ProductCard> {
         contentPadding: const EdgeInsets.all(12),
         leading: ClipRRect(
           borderRadius: BorderRadius.circular(12),
-          child: Image.file(
+          child:Image.file(
             File(widget.product.imagePath),
             width: 100,
             height: 100,
@@ -56,7 +57,7 @@ class _ProductCardState extends State<ProductCard> {
         subtitle: Text(
           widget.product.info,
           style: const TextStyle(
-            fontSize: 16,
+            fontSize: 13,
             fontWeight: FontWeight.w400,
             color: Colors.black87,
           ),
@@ -104,8 +105,6 @@ class _ProductCardState extends State<ProductCard> {
 
                     await favoriteProvider.toggleFavorite(fav);
                     favoriteProvider.read();
-
-                    // _favorite();
                   },
                   icon: Icon(
                     isFav ? Icons.favorite : Icons.favorite_border,
@@ -141,16 +140,6 @@ class _ProductCardState extends State<ProductCard> {
     print(index);
     context.showSnackBar(
         message: processResponse.message, error: processResponse.success);
-  }
-
-  void _favorite() async {
-    int userId = SharedPrefController().getValueFor<int>(PrefKeys.id.name)!;
-    Favorite fav = Favorite();
-    fav.userId = userId;
-    fav.productId = widget.product.id;
-
-    await Provider.of<FavoriteProvider>(context, listen: false).toggleFavorite(fav);
-
   }
 
   Cart  getCart(Product product){

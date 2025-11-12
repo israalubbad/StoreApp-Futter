@@ -26,4 +26,28 @@ A basic Flutter Store App that uses local SQLite database and Provider for state
 - ✅ State Management
     - Using Provider package
     - Separate providers for Cart, Favorites, Products
- 
+
+
+## 📸 Screenshots
+
+
+<p align="center">
+  <img src="screenshot/login.png" width="250">
+  <img src="screenshot/regester.png" width="250">
+</p>
+
+<p align="center">
+  <img src="screenshot/home.png" width="250">
+  <img src="screenshot/cart.png" width="250">
+
+</p>
+
+<p align="center">
+  <img src="screenshot/favorite.png" width="250">
+  <img src="screenshot/product_details.png" width="250">
+</p>
+
+<p align="center">
+   <img src="screenshot/products_admin.png" width="250">
+  <img src="screenshot/add_product.png" width="250">
+</p>

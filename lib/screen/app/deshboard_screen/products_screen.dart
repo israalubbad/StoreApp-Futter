@@ -26,6 +26,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+       automaticallyImplyLeading: false,
         title: Text('Products'),
         actions: [
           IconButton(

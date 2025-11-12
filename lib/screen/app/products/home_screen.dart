@@ -30,6 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text('Products'),
         actions: [
           IconButton(
@@ -79,7 +80,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
                   return ListView.builder(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 12, vertical: 8),
+                      horizontal: 12,
+                      vertical: 8,
+                    ),
                     itemCount: productsProvider.products.length,
                     itemBuilder: (context, index) {
                       final product = productsProvider.products[index];
@@ -116,13 +119,17 @@ class _HomeScreenState extends State<HomeScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context, true),
-              child: Text('Confirm',
-                  style: GoogleFonts.cairo(color: Colors.red)),
+              child: Text(
+                'Confirm',
+                style: GoogleFonts.cairo(color: Colors.red),
+              ),
             ),
             TextButton(
               onPressed: () => Navigator.pop(context, false),
-              child: Text('Cancel',
-                  style: GoogleFonts.cairo(color: Colors.blue)),
+              child: Text(
+                'Cancel',
+                style: GoogleFonts.cairo(color: Colors.blue),
+              ),
             ),
           ],
         );

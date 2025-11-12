@@ -24,7 +24,6 @@ class ProductsProvider extends ChangeNotifier{
     products = await _dbController.read();
     notifyListeners();
   }
-
   Future<void> search(String name) async {
     products = await _dbController.search(name);
     notifyListeners();
