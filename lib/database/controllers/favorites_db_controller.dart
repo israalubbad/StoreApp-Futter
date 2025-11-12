@@ -5,7 +5,7 @@ import 'package:store_app/prefs/shared_pref_controller.dart';
 
 class FavoritesDbController extends DbOperations<Favorite>{
   // CRUD : Create - Read - Update - Delete
-  int userId =SharedPrefController().getValueFor<int>(PrefKeys.id.name)!;
+  int get userId => SharedPrefController().getValueFor<int>(PrefKeys.id.name)!;
 
   @override
   Future<Favorite?> show(int id) {

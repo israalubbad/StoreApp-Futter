@@ -13,27 +13,37 @@ class CartProvider extends ChangeNotifier{
   double total = 0;
   int quantity = 0;
 
-  Future<ProcessResponse> create (Cart cart)async{
-    int index = cartItem.indexWhere((element) =>  element.productId == cart.productId,) ;
-    if(index == -1){
-      int newRowId = await _dbController. create(cart);
-      if(newRowId != 0){
+  Future<ProcessResponse> create (Cart cart) async {
+    int index = cartItem.indexWhere((element) => element.productId == cart.productId);
+
+    int availableQuantity = await _productController.getQuantity(cart.productId);
+
+    if (index == -1) {
+
+      if (availableQuantity < cart.count) {
+        return getResponse(false);
+      }
+
+      int newRowId = await _dbController.create(cart);
+
+      if (newRowId != 0) {
         cart.id = newRowId;
         total += cart.total;
-        quantity += 1;
+        quantity += cart.count;
         cartItem.add(cart);
         notifyListeners();
       }
       return getResponse(newRowId != 0);
-    }else{
-      int quantity = await _productController.getQuantity(cart.productId);
-      int newCount = cartItem[index].count + 1;
-      if(quantity >= newCount){
-        return changeQuantity(index,newCount);
-      }
-      return getResponse(false);
     }
+    int newCount = cartItem[index].count + cart.count;
+
+    if (newCount <= availableQuantity) {
+      return changeQuantity(index, newCount);
+    }
+
+    return getResponse(false);
   }
+
 
   void read () async{
     cartItem = await _dbController.read();
@@ -93,5 +103,9 @@ class CartProvider extends ChangeNotifier{
 
   ProcessResponse getResponse(bool success){
     return  ProcessResponse(message:success  ? 'Operation Completed successfully' : 'Operation failed!',success: success);
+  }
+
+  Future<int> getProductQuantity(int productId) async {
+    return await _productController.getQuantity(productId);
   }
 }

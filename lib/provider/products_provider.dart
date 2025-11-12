@@ -46,8 +46,8 @@ class ProductsProvider extends ChangeNotifier{
   Future<ProcessResponse> delete (int index)async{
     bool deleted = await _dbController.delete(products[index].id);
     if(deleted){
-      products.remove(index);
-        notifyListeners();
+      products.removeAt(index);
+      notifyListeners();
       }
     notifyListeners();
     return getResponse(deleted);

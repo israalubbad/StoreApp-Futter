@@ -4,7 +4,7 @@ import 'package:store_app/prefs/shared_pref_controller.dart';
 
 class CartDbController extends DbOperations<Cart>{
   // CRUD : Create - Read - Update - Delete
-  int userId =SharedPrefController().getValueFor<int>(PrefKeys.id.name)!;
+  int get userId => SharedPrefController().getValueFor<int>(PrefKeys.id.name)!;
 
   @override
   Future<Cart?> show(int id) {

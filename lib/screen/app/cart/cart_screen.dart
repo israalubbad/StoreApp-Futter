@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:store_app/utils/context_extenssion.dart';
 import '../../../provider/cart_provider.dart';
 
 class CartScreen extends StatefulWidget {
@@ -81,7 +82,7 @@ class _CartScreenState extends State<CartScreen> {
                                     File(item.imagePath),
                                     width: 100,
                                     height: 100,
-                                    fit: BoxFit.cover,
+                                    fit: BoxFit.contain,
                                   )
                                 : Container(
                                     width: 100,
@@ -131,11 +132,13 @@ class _CartScreenState extends State<CartScreen> {
                                   ),
                                   IconButton(
                                     icon: const Icon(Icons.add, size: 20),
-                                    onPressed: () {
-                                      cartProvider.changeQuantity(
-                                        index,
-                                        item.count + 1,
-                                      );
+                                    onPressed: () async {
+                                      int available = await cartProvider.getProductQuantity(item.productId);
+                                      if (item.count < available) {
+                                        cartProvider.changeQuantity(index, item.count + 1);
+                                      } else {
+                                        context.showSnackBar(message: "The available quantity does not allow increasing the amount" );
+                                      }
                                     },
                                   ),
                                 ],

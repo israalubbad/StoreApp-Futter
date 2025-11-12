@@ -62,27 +62,11 @@ class _ProductScreenState extends State<ProductScreen> {
             ),),
 
             Center(
-              child:
-              isUpdateProduct ?
-              Image.file(
-                File(product.imagePath),
-                height: 150.h,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              )
-                  : _pickedImage == null
-                  ? IconButton(
-                onPressed: _pickImage,
-                icon: Icon(Icons.camera_alt, size:90),
-              )
-                  : Image.file(
-                File(_pickedImage!.path),
-                height: 150.h,
-                width: double.infinity,
-                fit: BoxFit.cover,
+              child: GestureDetector(
+                onTap: _pickImage,
+                child: _buildImageWidget(),
               ),
             ),
-
             SizedBox(height: 20.h,),
             AppTextField(hint:'Name', keyboardType:  TextInputType.text, controller: _nameTextController),
             SizedBox(height: 10.h,),
@@ -168,6 +152,30 @@ class _ProductScreenState extends State<ProductScreen> {
       ? 'Update Product'
        : 'Create Product' ;
 
+  Widget _buildImageWidget() {
+    if (_pickedImage != null) {
+      return Image.file(
+        File(_pickedImage!.path),
+        height: 150,
+        width: double.infinity,
+        fit: BoxFit.contain,
+      );
+    }
+
+    if (isUpdateProduct && widget.product!.imagePath.isNotEmpty) {
+      return Image.file(
+        File(widget.product!.imagePath),
+        height: 150,
+        width: double.infinity,
+        fit: BoxFit.contain,
+      );
+    }
+
+    return Icon(
+      Icons.camera_alt,
+      size: 90,
+    );
+  }
 
 }
 

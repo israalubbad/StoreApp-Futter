@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:store_app/database/controllers/user_db_controller.dart';
 import 'package:store_app/models/process_response.dart';
 import 'package:store_app/utils/admin_credentials.dart';
@@ -7,6 +8,9 @@ import 'package:store_app/utils/helpers.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../prefs/shared_pref_controller.dart';
+import '../../provider/cart_provider.dart';
+import '../../provider/favorite_provider.dart';
+import '../../provider/products_provider.dart';
 import '../../widgets/app_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -149,9 +153,10 @@ class _LoginScreenState extends State<LoginScreen> with Helpers {
     }else{
       ProcessResponse processResponse  = await UserDbController().login(email: _emailTextController.text, password: _passwordTextController.text);
       print(processResponse.success);
-      if(processResponse.success){
+      if (processResponse.success) {
         await Navigator.pushReplacementNamed(context, '/mainAppView');
       }
+
       context.showSnackBar(message: processResponse.message,error: processResponse.success);
 
 

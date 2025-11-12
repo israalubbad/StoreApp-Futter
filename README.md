@@ -27,27 +27,33 @@ A basic Flutter Store App that uses local SQLite database and Provider for state
     - Using Provider package
     - Separate providers for Cart, Favorites, Products
 
+## 📥 Download the App
+
+You can download the APK here:
+
+👉 **Download APK:**  
+🔗 [APK Download](https://drive.google.com/file/d/12AHMdY_r4cpO_SheYaaANxNlxTt6D1Wo/view?usp=sharing)
 
 ## 📸 Screenshots
 
 
 <p align="center">
-  <img src="screenshot/login.png" width="250">
-  <img src="screenshot/regester.png" width="250">
+  <img src="assets/screenshot/login.png" width="250">
+  <img src="assets/screenshot/regester.png" width="250">
 </p>
 
 <p align="center">
-  <img src="screenshot/home.png" width="250">
-  <img src="screenshot/cart.png" width="250">
+  <img src="assets/screenshot/home.png" width="250">
+  <img src="assets/screenshot/cart.jpg" width="250">
 
 </p>
 
 <p align="center">
-  <img src="screenshot/favorite.png" width="250">
-  <img src="screenshot/product_details.png" width="250">
+  <img src="assets/screenshot/favorite.png" width="250">
+  <img src="assets/screenshot/product_details.png" width="250">
 </p>
 
 <p align="center">
-   <img src="screenshot/products_admin.png" width="250">
-  <img src="screenshot/add_product.png" width="250">
+   <img src="assets/screenshot/products_admin.png" width="250">
+  <img src="assets/screenshot/add_product.png" width="250">
 </p>

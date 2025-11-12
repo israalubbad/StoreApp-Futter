@@ -27,7 +27,7 @@ class ProductsDetailsScreen extends StatelessWidget {
               File(product.imagePath),
               width: double.infinity,
               height: 280,
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
             const SizedBox(height: 20),
             Card(

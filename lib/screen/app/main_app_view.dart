@@ -1,8 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:store_app/screen/app/favorite/favorite_screen.dart';
 import 'package:store_app/screen/app/products/home_screen.dart';
 
+import '../../provider/cart_provider.dart';
+import '../../provider/favorite_provider.dart';
+import '../../provider/products_provider.dart';
 import 'cart/cart_screen.dart';
 
 
@@ -15,6 +19,14 @@ class MainAppView extends StatefulWidget {
 
 class _MainAppViewState extends State<MainAppView> {
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<ProductsProvider>(context, listen: false).read();
+    Provider.of<CartProvider>(context, listen: false).read();
+    Provider.of<FavoriteProvider>(context, listen: false).read();
+  }
 
 
   late List<Widget?> screensList = [

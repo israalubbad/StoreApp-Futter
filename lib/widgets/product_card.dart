@@ -43,7 +43,7 @@ class _ProductCardState extends State<ProductCard> {
             File(widget.product.imagePath),
             width: 100,
             height: 100,
-            fit: BoxFit.cover,
+            fit: BoxFit.contain,
           ),
         ),
         title: Text(
@@ -150,6 +150,7 @@ class _ProductCardState extends State<ProductCard> {
     cart.count = 1;
     cart.productName = product.name;
     cart.userId = SharedPrefController().getValueFor<int>(PrefKeys.id.name)!;
+    print( SharedPrefController().getValueFor<int>(PrefKeys.id.name)!);
     return cart;
   }
 }
